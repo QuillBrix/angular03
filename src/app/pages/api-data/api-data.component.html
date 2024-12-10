@@ -1,0 +1,9 @@
+<h1>Random Dog Image</h1>
+<div *ngIf="imageUrl; else noData">
+  <img [src]="imageUrl" alt="Random Dog" width="300" />
+  <button (click)="fetchRandomImage()">Get Another Image</button>
+</div>
+<ng-template #noData>
+  <p>No data available. Click the button to load a random dog image.</p>
+  <button (click)="fetchRandomImage()">Load Image</button>
+</ng-template>

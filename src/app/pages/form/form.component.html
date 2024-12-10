@@ -1,0 +1,39 @@
+<h1>Feedback Form</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label for="name">Name:</label>
+  <input id="name" formControlName="name" />
+  <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+    Name is required.
+  </div>
+
+  <label for="email">Email:</label>
+  <input id="email" formControlName="email" />
+  <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+    Please enter a valid email.
+  </div>
+
+  <label for="feedbackType">Feedback Type:</label>
+  <select id="feedbackType" formControlName="feedbackType">
+    <option value="" disabled>Select feedback type</option>
+    <option value="complaint">Complaint</option>
+    <option value="suggestion">Suggestion</option>
+    <option value="appreciation">Appreciation</option>
+  </select>
+  <div *ngIf="form.get('feedbackType')?.invalid && form.get('feedbackType')?.touched">
+    Feedback type is required.
+  </div>
+
+  <label for="rating">Rating (1 to 5):</label>
+  <input id="rating" type="number" formControlName="rating" min="1" max="5" />
+  <div *ngIf="form.get('rating')?.invalid && form.get('rating')?.touched">
+    Please provide a rating between 1 and 5.
+  </div>
+
+  <label for="message">Message:</label>
+  <textarea id="message" formControlName="message"></textarea>
+  <div *ngIf="form.get('message')?.invalid && form.get('message')?.touched">
+    Message is required.
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Submit</button>
+</form>
